@@ -1,5 +1,8 @@
 (function(){
-  const lang = localStorage.getItem('lang') || 'sr';
+  // Derive current language from the URL path or html[lang], then sync to localStorage.
+  const pathLang = location.pathname.startsWith('/en/') ? 'en' : (location.pathname.startsWith('/sr/') ? 'sr' : null);
+  const lang = pathLang || document.documentElement.lang || localStorage.getItem('lang') || 'sr';
+  localStorage.setItem('lang', lang);
   document.querySelectorAll('[data-lang-toggle]').forEach(btn => {
     btn.textContent = lang === 'sr' ? 'EN' : 'SR';
     btn.addEventListener('click', () => {
