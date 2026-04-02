@@ -1,33 +1,72 @@
-# Serbia-marketplace
+# Serbia Marketplace
 
-Mreža Ukusa MVP prototype (Serbian-first B2B sourcing network).
+**Open Market Serbia** — a modern, full-stack marketplace connecting buyers and sellers across Serbia.
 
-## Product Docs
+## Tech Stack
 
-- [Mreža Ukusa — PRD v2](docs/PRD-v2.md)
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Runtime**: Node.js 20+
 
-## Run locally
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20 or later
+- npm 10 or later
+
+### Installation
 
 ```bash
-cd web
-python3 -m http.server 4173
+npm install
 ```
 
-Open: http://localhost:4173
+### Development
 
-## Implemented MVP routes
+```bash
+npm run dev
+```
 
-- `/`, `/sr`, `/en`
-- `/login`, `/signup`
-- `/onboarding/grower`, `/onboarding/buyer`
-- `/dashboard`, `/dashboard/products`, `/dashboard/requests`, `/dashboard/matches`, `/dashboard/messages`, `/dashboard/profile`
-- `/admin/verifications`, `/admin/matches`, `/admin/agents`
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+### Build
 
-## Deploy on Vercel
+```bash
+npm run build
+```
 
-This repository is configured for **zero-config Vercel deployment** using `vercel.json` rewrites to serve the `web/` app from the domain root.
+### Start (production)
 
-- No `.env` file is required.
-- No build command is required for deployment.
-- Public routes like `/`, `/sr`, `/en`, `/dashboard`, and `/admin/verifications` are mapped directly to `web/`.
+```bash
+npm start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+└── app/              # Next.js App Router pages and layouts
+    ├── layout.tsx    # Root layout (metadata, fonts)
+    ├── page.tsx      # Home page
+    └── globals.css   # Global styles
+public/               # Static assets
+```
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and fill in the required values:
+
+```bash
+cp .env.example .env.local
+```
+
+## Contributing
+
+See [AGENTS.md](./AGENTS.md) for coding conventions and guidance for AI agents working in this repo.
