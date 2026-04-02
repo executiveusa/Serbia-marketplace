@@ -1,0 +1,10 @@
+<!doctype html><html lang='sr'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><link rel='stylesheet' href='/static/styles.css'><title>Onboarding proizvođač</title></head><body>
+<div class='page-head'><div class='container'><strong>Onboarding • Proizvođač</strong></div></div>
+<section class='section'><div class='container'><form id='onboardingForm' class='form'><h2>Profil proizvođača</h2>
+<label for='municipality'>Opština</label><input id='municipality' required placeholder='Bačka Palanka'>
+<label for='main-products'>Glavni proizvodi i sorte</label><textarea id='main-products' required placeholder='Paradajz šljivar, paprika babura...'></textarea>
+<label for='monthly-capacity-kg'>Mesečni kapacitet (kg)</label><input id='monthly-capacity-kg' required type='number' min='1' value='500'>
+<label for='seasonality'>Sezonalnost</label><input id='seasonality' required placeholder='Maj–Oktobar'>
+<label for='trust-claim'>Izjava o poverenju</label><select id='trust-claim'><option>Porodično gazdinstvo</option><option>Sertifikovano organsko</option><option>U procesu konverzije</option><option>Nisko-intervencijsko (neprovereno)</option><option>Konvencionalno</option></select>
+<div class='cta-row'><button class='btn btn-primary' type='submit'>Sačuvaj i otvori kontrolnu tablu</button></div></form></div></section>
+<script src='/static/app.js'></script></body></html>
