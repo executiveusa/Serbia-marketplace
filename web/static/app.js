@@ -1,25 +1,12 @@
-(function () {
-  function getCurrentLang() {
-    const htmlLang = (document.documentElement.lang || '').trim().toLowerCase();
-    if (htmlLang === 'sr' || htmlLang === 'en') return htmlLang;
-
-    const path = (location.pathname || '').toLowerCase();
-    if (path.startsWith('/en')) return 'en';
-    if (path.startsWith('/sr')) return 'sr';
-
-    const saved = localStorage.getItem('lang');
-    return saved === 'en' ? 'en' : 'sr';
-  }
-
-  const currentLang = getCurrentLang();
-  localStorage.setItem('lang', currentLang);
-
-  document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
-    const next = currentLang === 'sr' ? 'en' : 'sr';
-    btn.textContent = next.toUpperCase();
-    btn.setAttribute('aria-label', next === 'sr' ? 'Prebaci na srpski' : 'Switch to English');
-
+(function(){
+  // Derive current language from the URL path or html[lang], then sync to localStorage.
+  const pathLang = location.pathname.startsWith('/en/') ? 'en' : (location.pathname.startsWith('/sr/') ? 'sr' : null);
+  const lang = pathLang || document.documentElement.lang || localStorage.getItem('lang') || 'sr';
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-lang-toggle]').forEach(btn => {
+    btn.textContent = lang === 'sr' ? 'EN' : 'SR';
     btn.addEventListener('click', () => {
+      const next = lang === 'sr' ? 'en' : 'sr';
       localStorage.setItem('lang', next);
       location.href = next === 'sr' ? '/sr/' : '/en/';
     });
@@ -31,8 +18,8 @@
       e.preventDefault();
       const role = document.querySelector('#role').value;
       const org = document.querySelector('#org').value;
-      sessionStorage.setItem('userRole', role);
-      sessionStorage.setItem('orgName', org || 'Nova Organizacija');
+      localStorage.setItem('userRole', role);
+      localStorage.setItem('orgName', org || 'Nova Organizacija');
       location.href = role === 'grower' ? '/onboarding/grower/' : '/onboarding/buyer/';
     });
   }
@@ -41,7 +28,7 @@
   if (onboard) {
     onboard.addEventListener('submit', (e) => {
       e.preventDefault();
-      sessionStorage.setItem('profileComplete', 'true');
+      localStorage.setItem('profileComplete', 'true');
       location.href = '/dashboard/';
     });
   }

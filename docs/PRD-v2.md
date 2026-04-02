@@ -85,7 +85,7 @@ Avoid common vibe-coded patterns:
 
 ### Design influences
 
-- **Uncodixfy** (intentional naming) as an anti-generic UI constraint system (strong hierarchy, intentional layout, disciplined visual design)
+- **Uncodixfy** as an anti-generic UI constraint system (strong hierarchy, intentional layout, disciplined visual design)
 - **Steve Krug** usability principles (obvious actions, clear labels, low interpretation cost)
 - **Awwwards** selectively for composition/restraint, not flashy motion
 
